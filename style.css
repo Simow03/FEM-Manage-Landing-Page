@@ -119,6 +119,21 @@ svg {
 .text-neutral-900 {
   color: var(--clr-neutral-900);
 }
+/* typography */
+.text-center {
+  text-align: center;
+}
+.text-center *{
+  margin-inline: auto;
+}
+@media (max-width: 50em) {
+  .text-center-sm-only {
+    text-align: center;
+  }
+  .text-center-sm-only * {
+    margin-inline: auto;
+  }
+}
 
 /* background colors */
 .bg-primary-400 {
@@ -145,9 +160,19 @@ svg {
 /* font sizes */
 .fs-primary-heading {
   font-size: var(--fs-800);
+  max-width: 16ch;
 }
 .fs-secondary-heading {
   font-size: var(--fs-700);
+  max-width: 17ch;
+}
+@media (max-width: 50em) {
+  .fs-primary-heading {
+    max-width: 12ch;
+  }
+  .fs-secondary-heading {
+    max-width: 16ch;
+  }
 }
 .fs-200 {
   font-size: var(--fs-200);
@@ -179,15 +204,17 @@ svg {
   .justify-self-end-md {
     justify-self: end;
   }
-  
 }
 
-/* padding blocks */
+/* padding & margin blocks */
 .padding-block-700 {
   padding-block: var(--size-700);
 }
 .padding-block-900 {
   padding-block: var(--size-900);
+}
+.margin-bottom-900 {
+  margin-block-end: var(--size-900);
 }
 /* visually hidden */
 .visually-hidden {
@@ -346,6 +373,53 @@ p[data-width="wide"] {
   }
 }
 
+/*============ Numbered items ============*/
+/* reset counter whenever there is a new numbered list */
+.numbered-list {
+  counter-reset: count;
+}
+/* increment counter by one each li */
+.numbered-list li {
+  counter-increment: count;
+}
+.numbered-list div {
+  display: grid;
+  position: relative;
+  align-items: center;
+  column-gap: var(--size-400);
+  grid-template-columns: min-content 1fr;
+}
+.numbered-list p {
+  grid-column: 1/-1;
+}
+.numbered-list div::before {
+  content: "0" counter(count);
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-900);
+  font-weight: var(--fw-bold);
+  padding: var(--size-200) var(--size-500);
+  border-radius: 100vw;
+}
+@media (max-width: 50em) {
+  .numbered-list h3::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* extend the background with box shadow (not causing overflow) */
+    box-shadow: 5em 0 0 var(--clr-primary-900);
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    border-radius: 100vw 0 0 100vw;
+    z-index: -1;
+    background: var(--clr-primary-900);
+  }
+}
+@media (min-width: 40em) {
+  .numbered-list p {
+    grid-column: 2/-1;
+  }
+}
+
 /*============ CTA ============*/
 #cta {
   position: relative;
@@ -387,19 +461,19 @@ p[data-width="wide"] {
 .footer-wrapper {
   display: grid;
   gap: var(--size-700);
-  grid-template-areas:'form' 'nav' 'logo-social' ;
+  grid-template-areas: "form" "nav" "logo-social";
 }
-.footer-wrapper .logo-social{
+.footer-wrapper .logo-social {
   grid-area: logo-social;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   gap: var(--size-700);
 }
-.footer-wrapper .nav{
+.footer-wrapper .nav {
   grid-area: nav;
 }
-.footer-wrapper .form{
+.footer-wrapper .form {
   grid-area: form;
   display: grid;
   align-content: space-between;
@@ -438,7 +512,7 @@ p[data-width="wide"] {
     width: var(--size-600);
   }
   .footer-wrapper {
-    grid-template-areas: 'logo-social nav form';
+    grid-template-areas: "logo-social nav form";
   }
   .footer-wrapper .logo-social {
     flex-direction: column;
