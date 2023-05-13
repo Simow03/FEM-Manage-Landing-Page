@@ -263,7 +263,6 @@ p[data-width="wide"] {
 }
 .button[data-type="footer"] {
   box-shadow: unset;
-  padding: 1.25em 1.75em;
 }
 
 /*============ Navbar ============*/
@@ -289,7 +288,7 @@ p[data-width="wide"] {
   text-decoration: none;
 }
 .nav-list a:hover,
-.nav-list a:focus {
+.nav-list a:focus-visible {
   color: var(--clr-neutral-400);
 }
 .display-sm-none {
@@ -367,5 +366,91 @@ p[data-width="wide"] {
 @media (min-width: 50em) {
   #cta {
     text-align: left;
+  }
+}
+
+/*============ Footer ============*/
+#footer {
+  --logo-color: var(--clr-neutral-900);
+}
+#footer-navigation {
+  columns: 2;
+  gap: clamp(var(--size-200), 30vw, var(--size-900));
+}
+#footer-navigation a {
+  color: var(--clr-neutral-900);
+  text-decoration: none;
+}
+#footer-navigation a:is(:hover, :focus-visible) {
+  color: var(--clr-primary-400);
+}
+.footer-wrapper {
+  display: grid;
+  gap: var(--size-700);
+  grid-template-areas:'form' 'nav' 'logo-social' ;
+}
+.footer-wrapper .logo-social{
+  grid-area: logo-social;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: var(--size-700);
+}
+.footer-wrapper .nav{
+  grid-area: nav;
+}
+.footer-wrapper .form{
+  grid-area: form;
+  display: grid;
+  align-content: space-between;
+  justify-content: end;
+  text-align: end;
+}
+.footer-wrapper input {
+  border-radius: 100vw;
+  border: none;
+  padding: var(--size-300) var(--size-400);
+}
+.footer-wrapper form {
+  display: flex;
+  gap: var(--size-200);
+}
+.social-list {
+  display: flex;
+  gap: var(--size-600);
+}
+.social-icon {
+  width: var(--size-700);
+  fill: var(--clr-neutral-900);
+  aspect-ratio: 1;
+}
+.social-list a:is(:hover, :focus-visible) .social-icon {
+  fill: var(--clr-primary-400);
+}
+
+/* at large screens only */
+@media (min-width: 50em) {
+  .social-list {
+    display: flex;
+    gap: var(--size-300);
+  }
+  .social-icon {
+    width: var(--size-600);
+  }
+  .footer-wrapper {
+    grid-template-areas: 'logo-social nav form';
+  }
+  .footer-wrapper .logo-social {
+    flex-direction: column;
+    gap: unset;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+/* at small screens only */
+@media (max-width: 50em) {
+  .footer-wrapper > * {
+    margin-inline: auto;
   }
 }

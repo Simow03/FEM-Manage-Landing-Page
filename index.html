@@ -10,7 +10,9 @@
   <body class="bg-neutral-900">
     <header id="header">
       <div class="container nav-wrapper">
-        <a href="#"><img src="/images/logo.svg" alt="manage-logo" /></a>
+        <a href="#"><svg class="icon" width= "146" height="24">
+          <use xlink:href="/images/logo.svg#logo"></use>
+        </svg></a>
         <button
           class="mobile-nav-toggle"
           aria-controls="nav-list"
@@ -156,18 +158,56 @@
       class="padding-block-900 bg-neutral-100 text-neutral-900"
     >
       <div class="container">
-        <div class="even-columns">
-          <div class="column">
-            <a href="#"><img src="/images/logo.svg" alt="manage-logo" /></a>
-            <ul role="list" aria-label="social links">
-              <li><a href="#" aria-label="facebook"></a></li>
-              <li><a href="#" aria-label="youtube"></a></li>
-              <li><a href="#" aria-label="twitter"></a></li>
-              <li><a href="#" aria-label="pinterest"></a></li>
-              <li><a href="#" aria-label="instagram"></a></li>
+        <div class="footer-wrapper">
+          <div class="column logo-social">
+            <a href="#" aria-label="home"><svg class="icon" width= "146" height="24">
+              <use xlink:href="/images/logo.svg#logo"></use>
+            </svg></a>
+            <ul role="list" aria-label="social links" class="social-list">
+              <li>
+                <a href="#" aria-label="facebook"
+                  ><svg class="social-icon">
+                    <use
+                      xlink:href="/images/social-icons.svg#icon-facebook"
+                    ></use></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#" aria-label="youtube"
+                  ><svg class="social-icon">
+                    <use
+                      xlink:href="/images/social-icons.svg#icon-youtube"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="twitter"
+                  ><svg class="social-icon">
+                    <use
+                      xlink:href="/images/social-icons.svg#icon-twitter"
+                    ></use></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#" aria-label="pinterest"
+                  ><svg class="social-icon">
+                    <use
+                      xlink:href="/images/social-icons.svg#icon-pinterest"
+                    ></use></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#" aria-label="instagram"
+                  ><svg class="social-icon">
+                    <use
+                      xlink:href="/images/social-icons.svg#icon-instagram"
+                    ></use></svg
+                ></a>
+              </li>
             </ul>
           </div>
-          <div class="column">
+          <div class="column nav">
             <nav id="footer-navigation">
               <ul aria-label="footer" role="list">
                 <li><a href="#">Home</a></li>
@@ -180,7 +220,7 @@
               </ul>
             </nav>
           </div>
-          <div class="column">
+          <div class="column form">
             <form action="">
               <input type="email" />
               <button class="button" data-type="footer">Go</button>
