@@ -10,3 +10,14 @@ navToggle.addEventListener("click", () => {
   header.toggleAttribute('data-overlay');
   navToggle.toggleAttribute('data-fixed');
 });
+
+const slider = new A11YSlider(document.querySelector('.slider'), {
+  adaptiveHeight: true,
+  dots: true,
+  arrows: false,
+  responsive: {
+    800: {
+      dots: false, //dots enabled 800px and down
+    }
+  } 
+});
