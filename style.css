@@ -29,9 +29,14 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+/* Cut the overflow issue */
+html,body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 /* Set core body defaults */
 body {
-  height: 100%;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -75,7 +80,7 @@ svg {
   --clr-accent-400: hsl(228, 39%, 23%);
 
   --clr-neutral-100: hsl(233, 12%, 13%);
-  --clr-neutral-200: rgba(250,250,250,255);
+  --clr-neutral-200: rgba(250, 250, 250, 255);
   --clr-neutral-900: hsl(0, 0%, 98%);
 
   /* font family */
@@ -123,10 +128,10 @@ svg {
 .text-center {
   text-align: center;
 }
-.text-center *{
+.text-center * {
   margin-inline: auto;
 }
-@media (max-width: 50em) {
+@media (max-width: 40em) {
   .text-center-sm-only {
     text-align: center;
   }
@@ -166,7 +171,7 @@ svg {
   font-size: var(--fs-700);
   max-width: 17ch;
 }
-@media (max-width: 50em) {
+@media (max-width: 40em) {
   .fs-primary-heading {
     max-width: 12ch;
   }
@@ -200,7 +205,7 @@ svg {
 .vertical-align-center {
   align-items: center;
 }
-@media (min-width: 50em) {
+@media (min-width: 40em) {
   .justify-self-end-md {
     justify-self: end;
   }
@@ -255,7 +260,7 @@ p[data-width="wide"] {
   display: grid;
   gap: 1rem;
 }
-@media (min-width: 50em) {
+@media (min-width: 40em) {
   .even-columns {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
@@ -321,7 +326,7 @@ p[data-width="wide"] {
 .display-sm-none {
   display: none;
 }
-@media (max-width: 50em) {
+@media (max-width: 40em) {
   #primary-navigation {
     display: none;
     position: fixed;
@@ -335,6 +340,10 @@ p[data-width="wide"] {
   }
   #primary-navigation[data-visible] {
     display: block;
+  }
+  #header[data-overlay] {
+    position: relative;
+    z-index: 999;
   }
   #header[data-overlay]::before {
     content: "";
@@ -358,6 +367,16 @@ p[data-width="wide"] {
     border: none;
     padding: 0.5em;
     cursor: pointer;
+    width: 1.65rem;
+    aspect-ratio: 1;
+
+    background-image: url(/images/icon-hamburger.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url(/images/icon-close.svg);
   }
   .mobile-nav-toggle[data-fixed] {
     position: fixed !important;
@@ -367,12 +386,55 @@ p[data-width="wide"] {
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 40em) {
   .display-md-inline-flex {
     display: inline-flex;
   }
 }
 
+/*============ Hero ============*/
+.blob-bg::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  width: 85%;
+  max-height: 70vh;
+  aspect-ratio: 1/1.2;
+  background-image: url(/images/bg-tablet-pattern.svg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+.sales-points__blob {
+  position: relative;
+}
+.sales-points__blob::before {
+  content:  url("/images/bg-tablet-pattern.svg");
+  zoom: 40%;
+  position: absolute;
+  z-index: -1;
+  left: 65%;
+  bottom: 97%;
+  width: 100px;
+}
+@media (max-width: 40em) {
+  .blob-bg {
+    order: -1;
+  }
+}
+@media (min-width: 40em) {
+  .blob-bg::before {
+    width: 45%;
+    height: 55%;
+  }
+  .sales-points__blob::before {
+    zoom: 70%;
+    left: -600px;
+    top: 50%;
+    width: 100px;
+  }
+}
 /*============ Numbered items ============*/
 /* reset counter whenever there is a new numbered list */
 .numbered-list {
@@ -400,7 +462,7 @@ p[data-width="wide"] {
   padding: var(--size-200) var(--size-500);
   border-radius: 100vw;
 }
-@media (max-width: 50em) {
+@media (max-width: 40em) {
   .numbered-list h3::before {
     content: "";
     position: absolute;
@@ -434,7 +496,7 @@ p[data-width="wide"] {
   width: 100%;
   flex: 0 0 auto;
 }
-@media (min-width: 50em) {
+@media (min-width: 40em) {
   .slider > * {
     width: 37%;
   }
@@ -447,7 +509,7 @@ p[data-width="wide"] {
 .slider img {
   width: var(--size-800);
   position: relative;
-  top: calc(var(--size-800)/2);
+  top: calc(var(--size-800) / 2);
   margin-inline: auto;
 }
 .a11y-slider-dots {
@@ -496,7 +558,7 @@ p[data-width="wide"] {
   background-position: -15rem -5rem, 80em -42rem;
   opacity: 0.1;
 }
-@media (min-width: 50em) {
+@media (min-width: 40em) {
   #cta {
     text-align: left;
   }
@@ -562,7 +624,7 @@ p[data-width="wide"] {
 }
 
 /* at large screens only */
-@media (min-width: 50em) {
+@media (min-width: 40em) {
   .social-list {
     display: flex;
     gap: var(--size-300);
@@ -582,7 +644,7 @@ p[data-width="wide"] {
 }
 
 /* at small screens only */
-@media (max-width: 50em) {
+@media (max-width: 40em) {
   .footer-wrapper > * {
     margin-inline: auto;
   }
