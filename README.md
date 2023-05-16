@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Repository link](https://github.com/Simow03/FEM-Manage-Landing-Page)
-- Live Site URL: [Live site link](https://my-live-site-url.com)
+- Live Site URL: [Live site link](https://femmanagelandingpage.netlify.app/)
 
 ## My process
 
