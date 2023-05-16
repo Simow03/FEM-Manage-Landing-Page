@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](/images/manage-landing-page-screenshot.png)
+![](/images/mlp-screenshot.png)
 
 ### Links
 
