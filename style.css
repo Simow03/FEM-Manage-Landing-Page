@@ -30,7 +30,8 @@ html:focus-within {
 }
 
 /* Cut the overflow issue */
-html,body {
+html,
+body {
   min-height: 100%;
   overflow-x: hidden;
 }
@@ -78,6 +79,7 @@ svg {
   --clr-primary-900: hsl(13, 100%, 96%);
 
   --clr-accent-400: hsl(228, 39%, 23%);
+  --clr-accent-200: hsl(227, 12%, 61%);
 
   --clr-neutral-100: hsl(233, 12%, 13%);
   --clr-neutral-200: rgba(250, 250, 250, 255);
@@ -171,12 +173,15 @@ svg {
   font-size: var(--fs-700);
   max-width: 17ch;
 }
+[data-characters="large"] {
+  max-width: 18ch;
+}
 @media (max-width: 40em) {
-  .fs-primary-heading {
-    max-width: 12ch;
-  }
   .fs-secondary-heading {
     max-width: 16ch;
+  }
+  [data-characters="large"] {
+    max-width: 12ch;
   }
 }
 .fs-200 {
@@ -204,6 +209,7 @@ svg {
 }
 .vertical-align-center {
   align-items: center;
+  justify-content: center;
 }
 @media (min-width: 40em) {
   .justify-self-end-md {
@@ -221,6 +227,16 @@ svg {
 .margin-bottom-900 {
   margin-block-end: var(--size-900);
 }
+@media (min-width: 40em) {
+  .margin-top-md-only-900 {
+    margin-block-start: calc(var(--size-900) * 3);
+  }
+}
+@media (max-width: 40em) {
+  .margin-top-sm-only-500 {
+    margin-block-start: var(--size-500);
+  }
+}
 /* visually hidden */
 .visually-hidden {
   position: absolute;
@@ -233,6 +249,34 @@ svg {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+@media (min-width: 40em) {
+  .visually-hidden-md {
+    position: absolute;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+@media (max-width: 40em) {
+  .visually-hidden-sm {
+    position: absolute;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
 }
 
 /*============ General styling ============*/
@@ -321,7 +365,7 @@ p[data-width="wide"] {
 }
 .nav-list a:hover,
 .nav-list a:focus-visible {
-  color: var(--clr-neutral-400);
+  color: var(--clr-accent-200);
 }
 .display-sm-none {
   display: none;
@@ -410,7 +454,8 @@ p[data-width="wide"] {
   position: relative;
 }
 .sales-points__blob::before {
-  content:  url("/images/bg-tablet-pattern.svg");
+  content: url("/images/bg-tablet-pattern.svg");
+  opacity: 0.8;
   zoom: 40%;
   position: absolute;
   z-index: -1;
@@ -430,8 +475,8 @@ p[data-width="wide"] {
   }
   .sales-points__blob::before {
     zoom: 70%;
-    left: -600px;
-    top: 50%;
+    left: -700px;
+    top: 52%;
     width: 100px;
   }
 }
@@ -570,7 +615,7 @@ p[data-width="wide"] {
 }
 #footer-navigation {
   columns: 2;
-  gap: clamp(var(--size-200), 30vw, var(--size-900));
+  gap: 8vw;
 }
 #footer-navigation a {
   color: var(--clr-neutral-900);
@@ -589,10 +634,15 @@ p[data-width="wide"] {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  gap: var(--size-700);
+  gap: var(--size-900);
 }
 .footer-wrapper .nav {
   grid-area: nav;
+}
+.footer-wrapper .nav li {
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-300);
+  margin-bottom: var(--size-300);
 }
 .footer-wrapper .form {
   grid-area: form;
@@ -622,7 +672,11 @@ p[data-width="wide"] {
 .social-list a:is(:hover, :focus-visible) .social-icon {
   fill: var(--clr-primary-400);
 }
-
+.copyright {
+  font-size: var(--size-300);
+  font-weight: var(--fw-regular);
+  opacity: .6; 
+}
 /* at large screens only */
 @media (min-width: 40em) {
   .social-list {
