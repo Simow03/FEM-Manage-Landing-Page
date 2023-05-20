@@ -703,3 +703,10 @@ p[data-width="wide"] {
     margin-inline: auto;
   }
 }
+.error-message {
+  text-align: start;
+  font-style: italic;
+  font-size: var(--size-300);
+  margin-left: var(--size-300);
+  color: rgb(207, 61, 61);
+}

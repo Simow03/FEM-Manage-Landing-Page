@@ -21,3 +21,28 @@ const slider = new A11YSlider(document.querySelector('.slider'), {
     }
   } 
 });
+
+const formEmailInput = document.getElementById('form-email-input');
+const formSubmit = document.getElementById('form-submit');
+const errorMessage = document.querySelector('.error-message');
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+formSubmit.onclick = () => {
+  if (formEmailInput.value == "") {
+    errorMessage.innerHTML = "this field is required";
+  }
+  else if (formEmailInput.value !== validateEmail) {
+    errorMessage.innerHTML = "please insert a valid email";
+    formEmailInput.style.color = "rgb(207, 61, 61)";
+    formEmailInput.style.border = "1px solid rgb(207, 61, 61)";
+  }
+  else {
+    errorMessage.innerHTML = '';
+  }
+}
